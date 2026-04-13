@@ -1,0 +1,12 @@
+package com.concert.booking.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class GeneralResponse {
+    private String message;
+}
