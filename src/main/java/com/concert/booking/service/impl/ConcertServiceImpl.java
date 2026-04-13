@@ -7,6 +7,7 @@ import com.concert.booking.repository.ConcertRepository;
 import com.concert.booking.service.ConcertService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -78,7 +79,7 @@ public class ConcertServiceImpl implements ConcertService {
 
     @Override
     public List<Concert> getAllConcerts() {
-        return repository.findAll();
+        return repository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 
     @Override

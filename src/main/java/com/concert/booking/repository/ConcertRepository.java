@@ -20,7 +20,7 @@ public interface ConcertRepository extends JpaRepository<Concert, String> {
     @Query(value = "SELECT * FROM concerts WHERE name ILIKE :name", nativeQuery = true)
     List<Concert> getByName(@Param("name") String name);
 
-    @Query("SELECT c FROM Concert c WHERE c.saleOpen <= :currentTime AND c.saleClose >= :currentTime")
+    @Query("SELECT c FROM Concert c WHERE c.saleOpen <= :currentTime AND c.saleClose >= :currentTime ORDER BY c.createdAt DESC")
     List<Concert> getConcertAvailable(@Param("currentTime") LocalDateTime currentTime);
 
     @Query("SELECT c FROM Concert c WHERE c.saleOpen <= :currentTime AND c.saleClose >= :currentTime AND c.id = :id")
