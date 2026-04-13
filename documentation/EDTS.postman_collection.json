@@ -1,0 +1,1075 @@
+{
+  "info": {
+    "_postman_id": "acd74672-62a3-4c86-9411-2ef417d954f8",
+    "name": "EDTS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12118444"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Apnan\",\r\n    \"email\": \"apnanjuanda@mailsac.com\",\r\n    \"password\": \"Apnan123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/user/register",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "user",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Register User",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Apnan\",\r\n    \"email\": \"apnanjuanda@mailsac.com\",\r\n    \"password\": \"Apnan123!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/user/register",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 04:50:36 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"success create user account\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Login User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);\r",
+              "if(jsonData.token != null || jsonData.token != undefined) {\r",
+              "    postman.setEnvironmentVariable(\"token\",jsonData.token);\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"apnanjuanda@mailsac.com\",\r\n    \"password\": \"Apnan123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/user/login",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "user",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Login User",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"apnanjuanda@mailsac.com\",\r\n    \"password\": \"Apnan123!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/user/login",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 04:57:26 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcG5hbmp1YW5kYUBtYWlsc2FjLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzc2MDU2MjQ2LCJleHAiOjE3NzYxNDI2NDZ9.0DwvkGIIrKDQA7Jw2rgf-6fIBlFrHxGcC96FlDoYD9U\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "[USER] Book Ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-User-ID",
+            "value": "6b3abb09-2a0e-43a1-b093-e42079527766",
+            "type": "text"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "U-1240",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"seats\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/concerts/:concertId/book",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "concerts",
+            ":concertId",
+            "book"
+          ],
+          "variable": [
+            {
+              "key": "concertId",
+              "value": "b3cbb2ce-696b-46bd-80f4-5cda4425b192"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Book Ticket",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "6b3abb09-2a0e-43a1-b093-e42079527766",
+                "type": "text"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "U-1239",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"seats\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/concerts/:concertId/book",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "concerts",
+                ":concertId",
+                "book"
+              ],
+              "variable": [
+                {
+                  "key": "concertId",
+                  "value": "b3cbb2ce-696b-46bd-80f4-5cda4425b192"
+                }
+              ]
+            }
+          },
+          "status": "Accepted",
+          "code": 202,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "69"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 00:37:29 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"orderId\": \"ab6a744c-dfa2-46cb-bffd-ae3f516d0de8\",\n    \"status\": \"PENDING\"\n}"
+        },
+        {
+          "name": "Idempotency will response same result",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-ID",
+                "value": "6b3abb09-2a0e-43a1-b093-e42079527766",
+                "type": "text"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "U-1239",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"seats\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/concerts/:concertId/book",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "concerts",
+                ":concertId",
+                "book"
+              ],
+              "variable": [
+                {
+                  "key": "concertId",
+                  "value": "b3cbb2ce-696b-46bd-80f4-5cda4425b192"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Idempotent-Replayed",
+              "value": "true"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json;charset=ISO-8859-1"
+            },
+            {
+              "key": "Content-Length",
+              "value": "69"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 00:44:01 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"orderId\": \"ab6a744c-dfa2-46cb-bffd-ae3f516d0de8\",\n    \"status\": \"PENDING\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Register Admin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Admin\",\r\n    \"email\": \"admin@mailsac.com\",\r\n    \"password\": \"Admin123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/admin/register",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "admin",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Register Admin",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Admin\",\r\n    \"email\": \"admin@mailsac.com\",\r\n    \"password\": \"Admin123!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/admin/register",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 06:55:58 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"success create admin account\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Login Admin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);\r",
+              "if(jsonData.token != null || jsonData.token != undefined) {\r",
+              "    postman.setEnvironmentVariable(\"token\",jsonData.token);\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"admin@mailsac.com\",\r\n    \"password\": \"Admin123!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/admin/login",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "admin",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Login User",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"apnanjuanda@mailsac.com\",\r\n    \"password\": \"Apnan123!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/user/login",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 04:57:26 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcG5hbmp1YW5kYUBtYWlsc2FjLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzc2MDU2MjQ2LCJleHAiOjE3NzYxNDI2NDZ9.0DwvkGIIrKDQA7Jw2rgf-6fIBlFrHxGcC96FlDoYD9U\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "[ADMIN] Add Concert",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Concert Muse\",\r\n    \"venue\": \"Venue Utama\",\r\n    \"saleOpen\": \"2026-05-13T05:00:00\",\r\n    \"saleClose\": \"2026-05-13T20:00:00\",\r\n    \"eventDate\": \"2026-05-14T05:00:00\",\r\n    \"quota\": 2500\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/admin/concert/add",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "admin",
+            "concert",
+            "add"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Add Concert",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Concert Dewa19\",\r\n    \"venue\": \"Venue Utama\",\r\n    \"saleOpen\": \"2026-04-13T05:00:00\",\r\n    \"saleClose\": \"2026-04-13T20:00:00\",\r\n    \"eventDate\": \"2026-04-14T05:00:00\",\r\n    \"quota\": 2500\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/admin/concert/add",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "concert",
+                "add"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 06:59:18 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"615a407d-b25a-4284-9582-07b1f80800cb\",\n    \"name\": \"Concert Dewa19\",\n    \"venue\": \"Venue Utama\",\n    \"saleOpen\": \"2026-04-13T05:00:00\",\n    \"saleClose\": \"2026-04-13T20:00:00\",\n    \"quota\": 2500,\n    \"eventDate\": \"2026-04-14T05:00:00\",\n    \"createdAt\": \"2026-04-13T13:59:18.7490331\",\n    \"updatedAt\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "[ADMIN] Update Concert",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Concert Dewa19 Update\",\r\n    \"venue\": \"Venue Utama\",\r\n    \"saleOpen\": \"2026-04-13T05:00:00\",\r\n    \"saleClose\": \"2026-04-13T20:00:00\",\r\n    \"eventDate\": \"2026-04-14T05:00:00\",\r\n    \"quota\": 3500\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/admin/concert/:concertId",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "admin",
+            "concert",
+            ":concertId"
+          ],
+          "variable": [
+            {
+              "key": "concertId",
+              "value": "615a407d-b25a-4284-9582-07b1f80800cb"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Update Concert",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Concert Dewa19 Update\",\r\n    \"venue\": \"Venue Utama\",\r\n    \"saleOpen\": \"2026-04-13T05:00:00\",\r\n    \"saleClose\": \"2026-04-13T20:00:00\",\r\n    \"eventDate\": \"2026-04-14T05:00:00\",\r\n    \"quota\": 3500\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/admin/concert/:concertId",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "concert",
+                ":concertId"
+              ],
+              "variable": [
+                {
+                  "key": "concertId",
+                  "value": "615a407d-b25a-4284-9582-07b1f80800cb"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 07:03:06 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"615a407d-b25a-4284-9582-07b1f80800cb\",\n    \"name\": \"Concert Dewa19 Update\",\n    \"venue\": \"Venue Utama\",\n    \"saleOpen\": \"2026-04-13T05:00:00\",\n    \"saleClose\": \"2026-04-13T20:00:00\",\n    \"quota\": 3500,\n    \"eventDate\": \"2026-04-14T05:00:00\",\n    \"createdAt\": \"2026-04-13T13:59:18.749033\",\n    \"updatedAt\": \"2026-04-13T14:03:05.9749153\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "[ADMIN] Delete Concert",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/admin/concert/:concertId",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "admin",
+            "concert",
+            ":concertId"
+          ],
+          "variable": [
+            {
+              "key": "concertId",
+              "value": "615a407d-b25a-4284-9582-07b1f80800cb"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Delete Concert",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/admin/concert/:concertId",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "concert",
+                ":concertId"
+              ],
+              "variable": [
+                {
+                  "key": "concertId",
+                  "value": "615a407d-b25a-4284-9582-07b1f80800cb"
+                }
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 07:07:02 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    },
+    {
+      "name": "Get All Concerts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/concert",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "concert"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get All Concerts",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/concert",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "concert"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 07:49:01 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"b3cbb2ce-696b-46bd-80f4-5cda4425b192\",\n        \"name\": \"Concert Avenged Seven Fold\",\n        \"venue\": \"venue GBK\",\n        \"saleOpen\": \"2026-04-13T00:01:00\",\n        \"saleClose\": \"2026-04-14T00:01:00\",\n        \"quota\": 1498,\n        \"eventDate\": \"2026-04-20T21:00:00\",\n        \"createdAt\": \"2026-04-13T00:01:00\",\n        \"updatedAt\": null\n    },\n    {\n        \"id\": \"6e43927d-6906-4281-a388-73717a06f452\",\n        \"name\": \"Concert Dewa19\",\n        \"venue\": \"Venue Utama\",\n        \"saleOpen\": \"2026-04-13T05:00:00\",\n        \"saleClose\": \"2026-04-13T20:00:00\",\n        \"quota\": 2500,\n        \"eventDate\": \"2026-04-14T05:00:00\",\n        \"createdAt\": \"2026-04-13T14:07:27.161069\",\n        \"updatedAt\": null\n    },\n    {\n        \"id\": \"b3c0844b-572d-4964-8c63-fa1ec17537bd\",\n        \"name\": \"Concert Linkin Park\",\n        \"venue\": \"Venue Utama\",\n        \"saleOpen\": \"2026-04-13T05:00:00\",\n        \"saleClose\": \"2026-04-13T20:00:00\",\n        \"quota\": 2500,\n        \"eventDate\": \"2026-04-14T05:00:00\",\n        \"createdAt\": \"2026-04-13T14:07:49.867701\",\n        \"updatedAt\": null\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get Concert By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/concert/:concertId",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "concert",
+            ":concertId"
+          ],
+          "variable": [
+            {
+              "key": "concertId",
+              "value": "b3cbb2ce-696b-46bd-80f4-5cda4425b192"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Concert By Id",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/concert/:concertId",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "concert",
+                ":concertId"
+              ],
+              "variable": [
+                {
+                  "key": "concertId",
+                  "value": "b3cbb2ce-696b-46bd-80f4-5cda4425b192"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 10:06:28 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"b3cbb2ce-696b-46bd-80f4-5cda4425b192\",\n    \"name\": \"Concert Avenged Seven Fold\",\n    \"venue\": \"venue GBK\",\n    \"saleOpen\": \"2026-04-13T00:01:00\",\n    \"saleClose\": \"2026-04-14T00:01:00\",\n    \"quota\": 1496,\n    \"eventDate\": \"2026-04-20T21:00:00\",\n    \"createdAt\": \"2026-04-13T00:01:00\",\n    \"updatedAt\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Available Concert",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/concert/available",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "concert",
+            "available"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Available Concert",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/api/concert/available",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "concert",
+                "available"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 13 Apr 2026 07:57:25 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"b3cbb2ce-696b-46bd-80f4-5cda4425b192\",\n        \"name\": \"Concert Avenged Seven Fold\",\n        \"venue\": \"venue GBK\",\n        \"saleOpen\": \"2026-04-13T00:01:00\",\n        \"saleClose\": \"2026-04-14T00:01:00\",\n        \"quota\": 1498,\n        \"eventDate\": \"2026-04-20T21:00:00\",\n        \"createdAt\": \"2026-04-13T00:01:00\",\n        \"updatedAt\": null\n    },\n    {\n        \"id\": \"6e43927d-6906-4281-a388-73717a06f452\",\n        \"name\": \"Concert Dewa19\",\n        \"venue\": \"Venue Utama\",\n        \"saleOpen\": \"2026-04-13T05:00:00\",\n        \"saleClose\": \"2026-04-13T20:00:00\",\n        \"quota\": 2500,\n        \"eventDate\": \"2026-04-14T05:00:00\",\n        \"createdAt\": \"2026-04-13T14:07:27.161069\",\n        \"updatedAt\": null\n    },\n    {\n        \"id\": \"b3c0844b-572d-4964-8c63-fa1ec17537bd\",\n        \"name\": \"Concert Linkin Park\",\n        \"venue\": \"Venue Utama\",\n        \"saleOpen\": \"2026-04-13T05:00:00\",\n        \"saleClose\": \"2026-04-13T20:00:00\",\n        \"quota\": 2500,\n        \"eventDate\": \"2026-04-14T05:00:00\",\n        \"createdAt\": \"2026-04-13T14:07:49.867701\",\n        \"updatedAt\": null\n    }\n]"
+        }
+      ]
+    }
+  ]
+}
